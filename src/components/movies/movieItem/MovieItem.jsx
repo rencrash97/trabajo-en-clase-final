@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
@@ -9,19 +9,19 @@ const MovieItem = ({ title, imageUrl, rating, duration, summary, available }) =>
     const [show, setShow] = useState(false);
 
 
-    const p = () => {
-        setNewTitle("Título actualizado.");
-    }
 
-    //hacer un handle para traer la variable de DeleteMovie
-
-    const onToggleShow = () => {
+    const ToggleShow = () => {
         if (show) {
             setShow(false);
         } else {
             setShow(true);
         }
-        console.log(show)
+        console.log(show) //despues borrar, es solo para probar si funciona
+    }
+
+    //hacer un handle para traer la variable de DeleteMovie
+    const handleToggleShow = (data) => {
+        setShow(data);
     }
 
     return (
@@ -37,11 +37,10 @@ const MovieItem = ({ title, imageUrl, rating, duration, summary, available }) =>
                     </div>
                     <Card.Subtitle className="mb-2 text-warning">⭐ {rating} puntos · {duration} min</Card.Subtitle>
                     <Card.Text className="flex-grow-1 text-light-emphasis movie-card-summary">{summary}</Card.Text>
-                    <Button variant="outline-light" onClick={p} className="mt-2">Seleccionar Película</Button>
-                    <Button variant="outline-light" onClick={onToggleShow} className="mt-2">Eliminar Película</Button>
+                    <Button variant="outline-light" onClick={ToggleShow} className="mt-2">Eliminar Película</Button>
                 </Card.Body>
             </Card>
-            <DeleteMovie toggleShow={show} title={title} />
+            <DeleteMovie toggleShow={show} title={title} onToggleShow={handleToggleShow}/>
         </>
     )
 }

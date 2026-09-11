@@ -4,6 +4,8 @@ import MovieItem from "./movieItem/MovieItem";
 
 const Movies = ({ mov }) => {
 
+   
+
     return (
 
         <div className="movie-app-bg py-5">
@@ -21,7 +23,8 @@ const Movies = ({ mov }) => {
                                 available={movie.available}
                             />
                         </Col>
-                    )}
+                    )
+                    }
                 </Row>
             </Container>
         </div>
